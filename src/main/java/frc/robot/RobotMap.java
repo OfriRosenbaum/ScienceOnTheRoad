@@ -9,6 +9,8 @@ public class RobotMap {
     
     public interface DIO {
 
+        int SHOOTER_UP_LIMIT = 0;
+        int SHOOTER_DOWN_LIMIT = 1;
     }
     
     public interface PWM {
@@ -17,6 +19,5 @@ public class RobotMap {
     
     public interface AIO {
 
-        int SHOOTER_POTENTIOMETER = -1;
     }
 }
