@@ -3,7 +3,8 @@ package frc.robot;
 public class RobotMap {
 
     public interface CAN {
-
+        int SHOOTER_TALON = -1;
+        int SHOOTER_VICTOR = -1;
     }
     
     public interface DIO {
@@ -14,7 +15,8 @@ public class RobotMap {
 
     }
     
-    public interface AIN {
-    
+    public interface AIO {
+
+        int SHOOTER_POTENTIOMETER = -1;
     }
 }
