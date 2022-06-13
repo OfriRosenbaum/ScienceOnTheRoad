@@ -5,6 +5,7 @@ public class RobotMap {
     public interface CAN {
         int SHOOTER_TALON = 14;
         int SHOOTER_VICTOR = 3;
+        int PCM = 1;
     }
     
     public interface DIO {
@@ -19,5 +20,9 @@ public class RobotMap {
     
     public interface AIO {
 
+    }
+
+    public interface PCM {
+        int LED = 3;
     }
 }
