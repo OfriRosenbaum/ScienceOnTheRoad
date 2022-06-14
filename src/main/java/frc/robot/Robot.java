@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
-        new MoveGenericSubsystem(shooter, shooter::getSpeedFromList).schedule();
+
     }
 
     /**
@@ -73,6 +73,8 @@ public class Robot extends TimedRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
+        shooter.zeroSpeed();
+        new MoveGenericSubsystem(shooter, shooter::getSpeedFromList).schedule();
     }
 
     /**

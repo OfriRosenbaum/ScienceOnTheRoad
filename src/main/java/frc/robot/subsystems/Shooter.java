@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.spikes2212.command.genericsubsystem.MotoredGenericSubsystem;
-import com.spikes2212.command.genericsubsystem.commands.MoveGenericSubsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -18,7 +17,7 @@ public class Shooter extends MotoredGenericSubsystem {
 
     private static final double SOLENOID_DURATION = 0.25;
 
-    private static final List<Double> SPEEDS = List.of(0.0, 0.2212, 0.420, 0.69);
+    private static final List<Double> SPEEDS = List.of(0.0, 0.35, 0.420, 0.5);
 
     private int currentSpeedIndex = 0;
 
@@ -34,7 +33,7 @@ public class Shooter extends MotoredGenericSubsystem {
         if (instance == null) {
             MotorController talon = new WPI_TalonSRX(RobotMap.CAN.SHOOTER_TALON);
             MotorController victor = new WPI_VictorSPX(RobotMap.CAN.SHOOTER_VICTOR);
-            victor.setInverted(true);
+            talon.setInverted(true);
             DigitalInput upLimit = new DigitalInput(RobotMap.DIO.SHOOTER_UP_LIMIT);
             DigitalInput downLimit = new DigitalInput(RobotMap.DIO.SHOOTER_DOWN_LIMIT);
             instance = new Shooter("shooter", upLimit, downLimit,
@@ -62,7 +61,7 @@ public class Shooter extends MotoredGenericSubsystem {
 
     @Override
     public void periodic() {
-        if (upLimit.get() && !lastUpLimitState && currentSpeedIndex < SPEEDS.size()) {
+        if (upLimit.get() && !lastUpLimitState && currentSpeedIndex < SPEEDS.size() - 1) {
             currentSpeedIndex++;
             activateSolenoid();
         }
@@ -87,5 +86,9 @@ public class Shooter extends MotoredGenericSubsystem {
             now = Timer.getFPGATimestamp();
         }
         solenoid.set(false);
+    }
+
+    public void zeroSpeed() {
+        currentSpeedIndex = 0;
     }
 }
