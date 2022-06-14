@@ -3,6 +3,7 @@ package frc.robot;
 public class RobotMap {
 
     public interface CAN {
+
         int SHOOTER_TALON = 14;
         int SHOOTER_VICTOR = 3;
         int PCM = 1;
