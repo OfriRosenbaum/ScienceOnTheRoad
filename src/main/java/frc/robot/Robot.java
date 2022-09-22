@@ -7,7 +7,7 @@ package frc.robot;
 import com.spikes2212.command.genericsubsystem.commands.MoveGenericSubsystem;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Conveyor;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -17,7 +17,7 @@ import frc.robot.subsystems.Shooter;
  */
 public class Robot extends TimedRobot {
 
-    private Shooter shooter;
+    private Conveyor conveyor;
 
     /**
      * This function is run when the robot is first started up and should be used for any
@@ -25,8 +25,8 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        shooter = Shooter.getInstance();
-        shooter.configureDashboard();
+        conveyor = Conveyor.getInstance();
+        conveyor.configureDashboard();
     }
 
     /**
@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotPeriodic() {
-        shooter.periodic();
+        conveyor.periodic();
         CommandScheduler.getInstance().run();
     }
 
@@ -73,8 +73,8 @@ public class Robot extends TimedRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        shooter.zeroSpeed();
-        new MoveGenericSubsystem(shooter, shooter::getSpeedFromList).schedule();
+        conveyor.zeroSpeed();
+        new MoveGenericSubsystem(conveyor, conveyor::getSpeedFromList).schedule();
     }
 
     /**
