@@ -16,7 +16,7 @@ public class Conveyor extends MotoredGenericSubsystem {
 
     private static final double SOLENOID_DURATION = 0.25;
 
-    private static final List<Double> SPEEDS = List.of(0.0, 0.2, 0.3, 0.4);
+    private static final List<Double> SPEEDS = List.of(0.0, 0.2, 0.45, 0.6);
 
     private int currentSpeedIndex = 0;
 

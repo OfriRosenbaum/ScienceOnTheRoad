@@ -10,7 +10,7 @@ public class RobotMap {
     
     public interface DIO {
 
-        int CONVEYOR_INCREASE_LIMIT = 0;
+        int CONVEYOR_INCREASE_LIMIT = 2;
         int CONVEYOR_DECREASE_LIMIT = 1;
     }
     
